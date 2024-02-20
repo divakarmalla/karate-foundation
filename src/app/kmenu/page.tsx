@@ -1,24 +1,27 @@
 'use client'
 import React from "react"
 import { PiBookOpenText } from "react-icons/pi";
+import { Modal } from 'react-responsive-modal'
 
 const Menu = () => {
-    return(
-        <div>
-            <div className="flex gap-[10px] pt-[20px] justify-end">
+    const [open, setOpen] = React.useState(false);
+
+    const Back = (
+        <div className="">
+            <div className="flex gap-[10px] p-[30px] justify-end">
                      <div>
                            <button className="bg-yellow w-[40px] h-[40px] rounded justify-center "><PiBookOpenText className="pl-[10px] text-[30px]"/></button>
                      </div>
-                     <div className="pr-[30px]">
+                     <div>
                            <button className="bg-yellow font-normal text-[20px] w-[130px] h-[40px] rounded">Kiai</button>
                      </div>
              </div>
-             <div className="flex items-end flex-col gap-y-[10px] pt-[20px] pr-[30px]">
+             <div className="flex items-end flex-col gap-y-[10px] p-[30px]">
                 <div className="bg-black h-[220px] w-[350px] p-[15px] rounded">
                     <p className="text-white text-[30px]">Timings</p>
-                    <div className="pt-[20px]">
+                    <div className="p-[10px] grid gap-y-[10px]">
                         <p className="text-white text-[15px] font-thin">Weekdays  <br />9 AM - 10 PM</p>
-                        <p className="text-white text-[15px] font-thin pt-[10px]">Weekends <br /> 9 AM - 5PM</p>
+                        <p className="text-white text-[15px] font-thin">Weekends <br /> 9 AM - 5PM</p>
                     </div>
                 </div>
                 <div>
@@ -32,6 +35,15 @@ const Menu = () => {
              </div>
 
         </div>
-    )
-}
+    );
+
+    return(
+        <div>
+            <button className="" onClick={()=> setOpen(true)}>BUTTON</button>
+            <Modal open={open} onClose={() => setOpen(false)}>
+                {Back}
+            </Modal>
+        </div>
+    );
+};
 export default Menu
